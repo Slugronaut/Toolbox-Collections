@@ -1,0 +1,16 @@
+{
+  "name": "com.postegames.collections",
+  "version": "1.0.0",
+  "displayName": "PEGLIB - Collections and Collection Extensions",
+  "description": "Provides additional collection types and extension methods for existing collection types.",
+  "unity": "2022.2",
+  "keywords": [
+    "collections",
+    "extensions"
+  ],
+  "author": {
+    "name": "Sluggy",
+    "email": "jcsluggy@gmail.com",
+    "url": "http:/postegames.com"
+  }
+}
