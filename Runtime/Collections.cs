@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-
+﻿using System;
+using System.Collections.Generic;
 
 namespace Toolbox.Collections
 {
@@ -8,6 +8,61 @@ namespace Toolbox.Collections
     /// </summary>
     public static class Collections
     {
+        /*
+        private static readonly List<GCHandle> _arrayHandles = new();
+        public T* pin<T>(T[] array) where T : unmanaged
+        {
+            if (array == null || array.Length == 0)
+                throw new Exception("Array must be non-null and non-empty");
+            GCHandle gcHandle = GCHandle.Alloc(array, GCHandleType.Pinned);
+            _arrayHandles.Add(gcHandle);
+            return (T*)gcHandle.AddrOfPinnedObject();
+        }
+
+        //EXAMPLE OF USE
+        private unsafe struct ConfigureInstanceDataJob : IJob 
+        {
+            [NativeDisableUnsafePtrRestriction] private Matrix4x4* pointMatrices;
+        }
+
+        //EXAMPLE TO RELEASE
+        foreach(GCHandle pinned in _arrayHandles)
+            pinned.Free();
+        _arrayHandles.Clear();
+        */
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <param name="element"></param>
+        public static T[] RemoveElement<T>(this T[] array, T elementToRemove)
+        {
+            int index = Array.IndexOf(array, elementToRemove);
+            if (index < 0) return array;
+
+            T[] result = new T[array.Length - 1];
+            if (index > 0) Array.Copy(array, 0, result, 0, index);
+            if (index < array.Length - 1) Array.Copy(array, index + 1, result, index, array.Length - index - 1);
+            return result;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="array"></param>
+        /// <param name="elementToAdd"></param>
+        /// <returns></returns>
+        public static T[] AddElement<T>(this T[] array, T elementToAdd)
+        {
+            T[] result = new T[array.Length + 1];
+            Array.Copy(array, result, array.Length);
+            result[array.Length] = elementToAdd;
+            return result;
+        }
+
         /// <summary>
         /// Adds a value to a dictionary. If the key already exists, the value is inserted into the value's list.
         /// </summary>
