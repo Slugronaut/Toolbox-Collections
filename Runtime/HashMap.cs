@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using System.Diagnostics;
 
-namespace Toolbox.Collections
+namespace Peg.Util
 {
     /// <summary>
     /// Generic, serializable dictionary. Note that it will serialize ok most of the time but will always revert

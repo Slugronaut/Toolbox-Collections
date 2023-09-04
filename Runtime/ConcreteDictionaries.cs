@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace Toolbox.Collections
+namespace Peg.Util
 {
     /// <summary>
     /// Concrete, non-generic serializable hashmaps. Generic version will serialize just fine,

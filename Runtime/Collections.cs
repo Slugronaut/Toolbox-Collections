@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine.Assertions;
 
-namespace Toolbox.Collections
+namespace Peg.Util
 {
     /// <summary>
     /// Provides several extension methods for C# collections.
@@ -31,6 +32,74 @@ namespace Toolbox.Collections
         _arrayHandles.Clear();
         */
 
+        /// <summary>
+        /// Returns a random element from the list that passes the given predicate.
+        /// NUll is returned if no match is found before exhausting the entire list.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        public static bool RandomWithState<T>(this List<T> list, Func<T, bool> predicate, out T output)
+        {
+            int len = list.Count;
+            int left = len;
+            for (int i = 0; i < len; i++)
+            {
+                T unit = list[i];
+                if (!predicate(unit)) continue;
+
+                float chance = 1.0f / (float)left;
+                left--;
+                if (UnityEngine.Random.value < chance)
+                {
+                    output = unit;
+                    return true;
+                }
+
+                if (left < 1)
+                    break;
+            }
+
+            output = default;
+            return false;
+        }
+
+        /// <summary>
+        /// Returns a random element from the list that passes the given predicate.
+        /// NUll is returned if no match is found before exhausting the entire list.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <param name="needed"></param>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        public static bool RandomWithState<T>(this List<T> list, int needed, Func<T, bool> predicate, ref List<T> outList)
+        {
+            int len = list.Count;
+            int left = len;
+            Assert.IsTrue(needed > 0);
+            Assert.IsTrue(needed <= len);
+            outList.Clear();
+
+            for (int i = 0; i < len; i++)
+            {
+                var unit = list[i];
+                if (!predicate(unit)) continue;
+
+                float chance = (float)needed / (float)left;
+                left--;
+                if (UnityEngine.Random.value < chance)
+                {
+                    needed--;
+                    outList.Add(unit);
+                }
+                if (left < 1 || needed < 1)
+                    break;
+            }
+
+            return outList.Count > 0;
+        }
 
         /// <summary>
         /// 

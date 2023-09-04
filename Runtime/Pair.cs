@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 
-namespace Toolbox.Collections
+namespace Peg.Util
 {
     /// <summary>
     /// Very simple class for storing paired values.

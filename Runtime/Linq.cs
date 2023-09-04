@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Toolbox.Linq
+namespace Peg.Linq
 {
     public static class ArrayUtil
     {

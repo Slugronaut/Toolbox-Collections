@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Toolbox.Collections
+namespace Peg.Util
 {
     /// <summary>
     /// Circular buffer of a fixed size that provides the illusion of inifite size. Useful for
