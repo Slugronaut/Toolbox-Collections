@@ -3,13 +3,13 @@
  */
 
 //Maybe not the best idea to use this namespace, but at least it's easy to remember.
-namespace System.Collections
+namespace Peg.Collections
 {
     /// <summary>
     /// Interface that must be exposed by all heap-able objects.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public interface IHeapItem<T> : IComparable<T>
+    public interface IHeapItem<T> : System.IComparable<T>
     {
         int HeapIndex { get; set; }
     }

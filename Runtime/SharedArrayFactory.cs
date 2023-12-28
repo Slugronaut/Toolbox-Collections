@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System;
 
 
-namespace Peg.Util
+namespace Peg.Collections
 {
     /// <summary>
     /// Factory class for arrays of objects that are commonly used as temporary variables.
