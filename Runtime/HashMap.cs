@@ -111,7 +111,7 @@ namespace Peg.Collections
                 throw new ArgumentOutOfRangeException("capacity");
  
             Initialize(capacity);
- 
+            
             _Comparer = (comparer ?? EqualityComparer<TKey>.Default);
         }
  
