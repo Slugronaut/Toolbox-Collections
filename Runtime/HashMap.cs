@@ -227,8 +227,11 @@ namespace Peg.Collections
  
         public bool Remove(TKey key)
         {
+            /*
+             * Boxing causes garbage!
             if (key == null)
                 throw new ArgumentNullException("key");
+            */
  
             int hash = _Comparer.GetHashCode(key) & 2147483647;
             int index = hash % _Buckets.Length;
@@ -258,8 +261,11 @@ namespace Peg.Collections
  
         private void Insert(TKey key, TValue value, bool add)
         {
+            /*
+             * Boxing causes garbage!
             if (key == null)
                 throw new ArgumentNullException("key");
+            */
  
             if (_Buckets == null)
                 Initialize(0);
@@ -331,9 +337,11 @@ namespace Peg.Collections
  
         private int FindIndex(TKey key)
         {
+            /*
+             * Boxing causes garbage!
             if (key == null)
                 throw new ArgumentNullException("key");
- 
+            */
             if (_Buckets != null)
             {
                 int hash = _Comparer.GetHashCode(key) & 2147483647;
